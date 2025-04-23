@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Soical Worker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: linear-gradient(120deg, #b6f5c9 0%, #b6e2ff 100%);
+      margin: 0;
+      font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
+      color: #222;
+    }
+    .newsletter-container {
+      max-width: 600px;
+      margin: 48px auto 32px auto;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(182,245,201,0.10), 0 1.5px 6px rgba(182,226,255,0.08);
+      padding: 0 0 40px 0;
+      overflow: hidden;
+    }
+    .brand-bar {
+      background: linear-gradient(90deg,#b6f5c9 0%,#ffd59e 50%,#b6e2ff 100%);
+      padding: 32px 0 24px 0;
+      text-align: center;
+    }
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(182,245,201,0.10);
+      margin-bottom: 10px;
+    }
+    .brand-title {
+      color: #222;
+      font-size: 2.1em;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+    .brand-desc {
+      color: #fffbe8;
+      font-size: 1.08em;
+      margin-bottom: 0;
+    }
+    .divider {
+      border: none;
+      border-top: 1.5px solid #b6e2ff;
+      margin: 0 0 0 0;
+    }
+    .content {
+      color: #333;
+      font-size: 1.09em;
+      line-height: 1.7;
+      margin: 0 0 36px 0;
+      padding: 32px 32px 0 32px;
+    }
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 18px;
+    }
+    .news-card {
+      display: flex;
+      align-items: center;
+      background: linear-gradient(120deg,#fffbe8 60%,#b6e2ff 100%);
+      border-radius: 15px;
+      box-shadow: 0 2px 12px rgba(255,213,158,0.07);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      border: 1.5px solid #b6f5c9;
+      position: relative;
+    }
+    .news-card:hover {
+      box-shadow: 0 8px 32px rgba(182,245,201,0.17);
+      transform: translateY(-2px) scale(1.012);
+    }
+    .news-img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin: 18px 0 18px 18px;
+      box-shadow: 0 2px 8px rgba(182,226,255,0.14);
+      border: 2.5px solid #fffbe8;
+      background: #e5e7eb;
+      flex-shrink: 0;
+    }
+    .news-info {
+      flex: 1;
+      padding: 18px 24px 18px 24px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .news-label {
+      display: inline-block;
+      background: linear-gradient(90deg,#b6f5c9 0%,#ffd59e 100%);
+      color: #3b3b3b;
+      font-size: 0.85em;
+      font-weight: 600;
+      padding: 3px 14px;
+      border-radius: 16px;
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+      box-shadow: 0 1px 4px rgba(182,245,201,0.09);
+    }
+    .news-info h2 {
+      margin: 0 0 4px 0;
+      font-size: 1.16em;
+      color: #ff9800;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .news-info p {
+      margin: 0 0 10px 0;
+      color: #4a6fa1;
+      font-size: 1em;
+      line-height: 1.6;
+      word-break: keep-all;
+    }
+    .card-btn {
+      display: inline-block;
+      background: linear-gradient(90deg,#b6f5c9 0%,#b6e2ff 100%);
+      color: #222;
+      padding: 8px 24px;
+      border-radius: 8px;
+      font-size: 0.98em;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      box-shadow: 0 1px 4px rgba(182,226,255,0.10);
+      transition: background 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .card-btn:hover {
+      background: linear-gradient(90deg,#ffd59e 0%,#b6f5c9 100%);
+      color: #ff9800;
+      box-shadow: 0 2px 8px rgba(255,213,158,0.15);
+    }
+    .cta-btn-group {
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      padding: 0 32px;
+    }
+    .cta-btn {
+      display: block;
+      width: 200px;
+      background: linear-gradient(90deg,#b6f5c9 0%,#ffd59e 50%,#b6e2ff 100%);
+      color: #3b3b3b;
+      text-align: center;
+      padding: 16px 0;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1.13em;
+      box-shadow: 0 2px 8px rgba(255,213,158,0.10);
+      transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+      margin: 0 auto;
+      border: none;
+    }
+    .cta-btn:hover {
+      background: linear-gradient(90deg,#ffd59e 0%,#b6f5c9 50%,#b6e2ff 100%);
+      color: #ff9800;
+      box-shadow: 0 4px 18px rgba(255,213,158,0.19);
+    }
+    .footer {
+      margin-top: 48px;
+      text-align: center;
+      color: #a3b19d;
+      font-size: 0.98em;
+      padding-bottom: 26px;
+    }
+    .footer .social-icons {
+      margin: 16px 0 0 0;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+    .footer .social-icons a {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #b6f5c9;
+      color: #ff9800;
+      line-height: 28px;
+      text-align: center;
+      font-size: 1.18em;
+      text-decoration: none;
+      transition: background 0.18s, color 0.18s;
+    }
+    .footer .social-icons a:hover {
+      background: #ffd59e;
+      color: #4a6fa1;
+    }
+    @media (max-width: 640px) {
+      .newsletter-container { padding: 0; border-radius: 0; }
+      .content { padding: 20px 4vw 0 4vw; }
+      .news-card { flex-direction: column; align-items: stretch; }
+      .news-img { width: 100px; height: 100px; margin: 18px auto 0 auto; }
+      .news-info { padding: 14px 10px; }
+      .cta-btn-group { flex-direction: column; gap: 10px; padding: 0 4vw; }
+    }
+  </style>
+</head>
+<body>
+  <div class="newsletter-container">
+    <div class="brand-bar">
+      <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="send 로고" class="brand-logo">
+      <div class="brand-title">Smart Soical Worker</div>
+      <div class="brand-desc">매월 스마트한 업무 적용을 위한 정보를 나눕니다.</div>
+    </div>
+    <hr class="divider">
+    <div class="content">
+      <strong style="font-size:1.13em;color:#6366f1;letter-spacing:-0.5px;">이번 주 주요 소식</strong>
+      <div class="card-list">
+        <!-- 카드형 소식 1 -->
+        <div class="news-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="소식 이미지1" class="news-img">
+          <div class="news-info">
+            <span class="news-label">훑어보기기</span>
+            <h2>스티비 뉴스레터 템플릿 활용법</h2>
+            <p>스티비에서 제공하는 다양한 템플릿을 활용해 뉴스레터를 쉽게 만들어보세요!</p>
+            <a href=https://www.naver.com class="card-btn">자세히 보기</a>
+          </div>
+        </div>
+        <!-- 카드형 소식 2 -->
+        <div class="news-card">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="소식 이미지2" class="news-img">
+          <div class="news-info">
+            <span class="news-label">TIP</span>
+            <h2>이메일 오픈율 높이기</h2>
+            <p>이메일 오픈율을 높이는 3가지 실전 팁을 소개합니다. 작은 변화로 큰 효과를 경험하세요!</p>
+            <a href=https://www.daum.net class="card-btn">팁 확인하기</a>
+          </div>
+        </div>
+        <!-- 카드형 소식 3 -->
+        <div class="news-card">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="소식 이미지3" class="news-img">
+          <div class="news-info">
+            <span class="news-label">EVENT</span>
+            <h2>특별 이벤트!</h2>
+            <p>send에서만 만날 수 있는 한정 이벤트에 참여해보세요. 다양한 혜택이 기다립니다.</p>
+            <a href="#" class="card-btn">이벤트 참여</a>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:36px;font-size:1.05em;color:#475569;text-align:center;">
+        다양한 소식과 꿀팁을 받아보고 싶다면 아래 버튼을 클릭해 구독하세요!
+      </p>
+    </div>
+    <div class="cta-btn-group">
+      <a href="https://your-newsletter-link.com" class="cta-btn">뉴스레터 구독하기</a>
+      <a href="https://your-event-link.com" class="cta-btn" style="background:linear-gradient(90deg,#10b981 0%,#38bdf8 100%);">이벤트 바로가기</a>
+    </div>
+    <div class="footer">
+      본 메일은 send 소식지 구독자에게 발송되었습니다.<br>
+      수신 거부는 <a href="https://your-unsubscribe-link.com" style="color:#b0b0b0;">여기</a>를 클릭하세요.
+      <div class="social-icons">
+        <a href="#" title="Instagram">&#x1F4F7;</a>
+        <a href="#" title="Twitter">&#x1F426;</a>
+        <a href="#" title="Facebook">&#x1F4F1;</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
